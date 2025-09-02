@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIET Student Connect 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0fa3b1;
+            --secondary: #0c7c8c;
+            --accent: #00d9c0;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            box-shadow: 0 5px 15px rgba(0, 217, 192, 0.4);
+        }
+
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(15, 163, 177, 0.5);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: perspective(800px) rotateY(10deg);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: perspective(800px) rotateY(0);
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+            animation: fadeIn 1s forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 217, 192, 0.2);
+        }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 30px;
+        }
+
+        .timeline-item:nth-child(odd):after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even):after {
+            left: -10px;
+        }
+
+        /* Prizes Section */
+        .prizes-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .prize-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .prize-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 217, 192, 0.3);
+        }
+
+        .prize-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .prize-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                flex-direction: column;
+                clip-path: circle(0px at 90% -10%);
+                -webkit-clip-path: circle(0px at 90% -10%);
+                background: var(--dark);
+                transition: all 0.8s ease-out;
+                pointer-events: none;
+                justify-content: center;
+                align-items: center;
+                left: 0;
+                top: 0;
+            }
+
+            .nav-links.open {
+                clip-path: circle(1500px at 90% -10%);
+                -webkit-clip-path: circle(1500px at 90% -10%);
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline:before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd):after,
+            .timeline-item:nth-child(even):after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">internal<span>Hack</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#prizes">Prizes</a></li>
+                    <li><a href="#register">Register</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Create. <span class="highlight">Innovate</span>. Transform.</h1>
+                <p>Join the  internal Hackathon 2025 and compete with the brightest minds to build solutions for
+                    real-world challenges. networking, and innovation.</p>
+                <a href="register.html" class="btn">Register Now</a>
+
+            </div>
+        </div>
+        <div class="particles-container" id="particles"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About The Event</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text animate">
+                    <p>Smart India Hackathon (SIH) is the world’s largest open innovation model, launched by the
+                        Ministry of Education, Government of India. It brings together students, mentors, government
+                        departments, and industry leaders to solve real-world challenges through technology and
+                        creativity.</p>
+
+                    <p><span class="highlight">Why SIH is important for Government and Corporate Departments?</span></p>
+
+                    <p><strong>Innovative Solutions:</strong> Get innovative, cost-effective solutions to real-world
+                        problems while giving students the opportunity to contribute to nation building. Corporates can
+                        also leverage SIH to strengthen their brand and discover future-ready talent.</p>
+
+                    <p><strong>Recognition and Visibility:</strong> Gain national-level recognition and visibility
+                        across premier institutions in India, positioning your department or company as a leader in
+                        innovation.</p>
+
+                    <p><strong>Out-of-the-box Ideas:</strong> Tap into the creativity of talented youngsters from all
+                        over the country who bring fresh, out-of-the-box perspectives to pressing challenges.</p>
+
+                    <p><strong>Innovation Movement Opportunity:</strong> Be a part of the world’s biggest open
+                        innovation movement and collaborate with some of the brightest minds in the country to co-create
+                        impactful solutions.</p>
+                </div>
+                <div class="about-image animate">
+                    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+                        alt="Hackathon Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Event Schedule</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <h3>Day 1 - Opening Ceremony</h3>
+                        <p>9:00 AM - Registration</p>
+                        <p>10:00 AM - Welcome Keynote</p>
+                        <p>11:00 AM - Team Formation</p>
+                        <p>12:00 PM - Hacking Begins</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <h3>Day 1 - Workshops</h3>
+                        <p>2:00 PM - API Workshop</p>
+                        <p>4:00 PM - UI/UX Design</p>
+                        <p>6:00 PM - Cloud Computing</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <h3>Day 2 - Hacking Continues</h3>
+                        <p>10:00 AM - Mentor Check-ins</p>
+                        <p>2:00 PM - Tech Talk</p>
+                        <p>7:00 PM - Mid-event Party</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate">
+                    <div class="timeline-content">
+                        <h3>Day 3 - Finale</h3>
+                        <p>10:00 AM - Hacking Ends</p>
+                        <p>11:00 AM - Project Demos</p>
+                        <p>2:00 PM - Judging</p>
+                        <p>4:00 PM - Awards Ceremony</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Amazing opportunity</h2>
+            </div>
+            <div class="prizes-container">
+                <div class="prize-card animate">
+                    <div class="prize-icon">🥇</div>
+                    <div class="prize-amount"></div>
+                    <p>First Place</p>
+                    <p>SIH Registration opportunities</p>
+                </div>
+                <div class="prize-card animate">
+                    <div class="prize-icon">🥈</div>
+                    <div class="prize-amount"></div>
+                    <p>Second Place</p>
+                    <p>SIH Registration opportunities</p>
+                </div>
+                <div class="prize-card animate">
+                    <div class="prize-icon">🥉</div>
+                    <div class="prize-amount"></div>
+                    <p>Third Place</p>
+                    <p>SIH Registration opportunities</p>
+                </div>
+                <div class="prize-card animate">
+                    <div class="prize-icon">💡</div>
+                    <div class="prize-amount"></div>
+                    <p>Innovation Award</p>
+                    <p>SIH Registration opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Registration Section -->
+<section id="register" class="section schedule">
+    <div class="container">
+        <div class="section-title">
+            <h2>Register Now</h2>
+        </div>
+        <div class="animate" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <p>Don't miss out on this incredible opportunity! Registration closes on October 20, 2025. Limited spots
+                available.</p>
+            <a href="register.html" class="btn" style="margin-top: 30px;">Apply to Participate</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SIHinternal Hackathon 2025</h3>
+                    <p>Sept 10-12, 2023</p>
+                    <p>auditorium-2</p>
+                    <p>Aryan Institute Of Engineering and Technology</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: aiethack25@gmail.com</p>
+                    <p>Phone: 9114424401</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/omm-snehasish-parida-81932532a/"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2025 SIHinternal Hackathon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        document.addEventListener('DOMContentLoaded', function () {
+            const particlesContainer = document.getElementById('particles');
+            const numberOfParticles = 30;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const opacity = Math.random() * 0.5 + 0.1;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = opacity;
+
+                particlesContainer.appendChild(particle);
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.3}s`;
+            });
+
+            // Mobile menu toggle
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        });
+    </script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
